@@ -25,7 +25,7 @@ def plot_confusion_matrix(cm, classes, figsize, save_name, normalize=True, title
     return cm
 
 if __name__ == '__main__':
-    BATCH_SIZE = 128
+    BATCH_SIZE = 64
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     x_train, x_test, y_train, y_test, y_class, y_class_num = get_data()
     test_dataset = torch.utils.data.TensorDataset(torch.from_numpy(x_test), torch.from_numpy(y_test))
