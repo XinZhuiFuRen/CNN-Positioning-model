@@ -10,8 +10,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 def get_data():
-    data = np.array(pd.read_csv('Location Fingerprint Dataset.csv'))
-    x, y = data[:, :16], data[:, 16:19]
+    data = np.array(pd.read_csv('Dataset.csv'))
+    x, y = data[:, :4], data[:, 5:6]
     x_scaler = StandardScaler()
     x = x_scaler.fit_transform(x)
     y_class = [list(np.unique(y[:, i])) for i in range(y.shape[1])]
@@ -83,7 +83,7 @@ class CNN(nn.Module):
 
 
 if __name__ == '__main__':
-    BATCH_SIZE, EPOCH = 256, 200
+    BATCH_SIZE, EPOCH = 128, 200
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     x_train, x_test, y_train, y_test, y_class, y_class_num = get_data()
